@@ -1,1 +1,19 @@
-<p>produto-detail works!</p>
+<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+<div *ngIf="isLoading" class="loading">Loading...</div>
+
+<div *ngIf="product && !errorMessage" class="product-detail">
+  <img [src]="product.image" alt="{{ product.title }}" />
+
+  <h2>{{ product.title }}</h2>
+
+  <p class="category">Categoria: {{ product.category }}</p>
+
+  <p class="price">Preço: R$ {{ product.price | number:'1.2-2' }}</p>
+
+  <p class="rating">Avaliação: {{ product.rating.rate }} ⭐ ({{ product.rating.count }} avaliações)</p>
+
+  <p class="description">{{ product.description }}</p>
+
+  <a routerLink="/" class="btn">← Voltar à lista</a>
+</div>

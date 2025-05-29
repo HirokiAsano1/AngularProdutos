@@ -2,6 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 
+interface rating
+{
+  rate:number;
+  count:number;
+}
+
 export interface Product {
   id: number;
   title: string;
@@ -9,6 +15,7 @@ export interface Product {
   description: string;
   category: string;
   image: string;
+  rating:rating
 }
 
 @Injectable({

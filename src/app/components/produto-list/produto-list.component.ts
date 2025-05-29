@@ -12,13 +12,21 @@ import { RouterLink } from '@angular/router';
 export class ProdutoListComponent implements OnInit {
   produtos:Product[] = [];
   errorMessage: string | null = null;
+  isLoading = true;
 
   constructor(private produtoService:ProdutoService){}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.produtoService.getProducts().subscribe({
-      next: (produtos) => this.produtos = produtos,
-      error: (err) => this.errorMessage = err.message
-    });
+    next: (produtos) => {
+      this.produtos = produtos;
+      this.isLoading = false;  // carregamento finalizado com sucesso
+    },
+    error: (err) => {
+      this.errorMessage = err.message;
+      this.isLoading = false;  // carregamento finalizado com erro
+    }
+  });
   }
 }

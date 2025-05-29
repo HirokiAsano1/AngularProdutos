@@ -1,8 +1,10 @@
-    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
-    <div *ngIf="!errorMessage">
-      <div *ngFor="let products of produtos " class="post-card">
-        <h3>{{ products.title }}</h3>
-        <p>{{ products.description| slice:0:100 }}...</p>
-        <a [routerLink]="['/post', products.id]" class="btn">View Details</a>
-      </div>
-    </div>
+ <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+<div *ngIf="isLoading" class="loading">Loading...</div>
+ <div *ngIf="!errorMessage" class="product-list" >
+  <div *ngFor="let product of produtos" class="product-card">
+    <img [src]="product.image" alt="{{ product.title }}" />
+    <h3>{{ product.title }}</h3>
+    <p>Preço: R$ {{ product.price | number: '1.2-2' }}</p>
+    <a [routerLink]="['/products', product.id]" class="btn">View Details</a>
+  </div>
+</div>

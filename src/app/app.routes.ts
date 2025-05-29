@@ -3,5 +3,7 @@ import { ProdutoDetailComponent } from './components/produto-detail/produto-deta
 import { ProdutoListComponent } from './components/produto-list/produto-list.component';
 
 export const routes: Routes = [
-     { path: '', component: ProdutoListComponent },
+{ path: '', component: ProdutoListComponent },
+{ path: 'products/:id', component: ProdutoDetailComponent },
+{ path: '**', redirectTo: '' }
 ];

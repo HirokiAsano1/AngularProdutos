@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-produto-list',
-  imports: [CommonModule,RouterLink],
+  imports: [CommonModule,RouterLink,],
   templateUrl: './produto-list.component.html',
   styleUrl: './produto-list.component.css'
 })
@@ -21,11 +21,11 @@ export class ProdutoListComponent implements OnInit {
     this.produtoService.getProducts().subscribe({
     next: (produtos) => {
       this.produtos = produtos;
-      this.isLoading = false;  // carregamento finalizado com sucesso
+      this.isLoading = false; 
     },
     error: (err) => {
       this.errorMessage = err.message;
-      this.isLoading = false;  // carregamento finalizado com erro
+      this.isLoading = false; 
     }
   });
   }
